@@ -67,10 +67,10 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Received upload: %s, Size: %d bytes, Content-Type: %s",
 		handler.Filename, handler.Size, handler.Header.Get("Content-Type"))
 
-	uuid := uuid.Must(uuid.NewRandom())
+	uuid := uuid.New().String()
 	ext := filepath.Ext(handler.Filename)
 	baseFilename := handler.Filename[:len(handler.Filename)-len(ext)]
-	newFilename := fmt.Sprintf("%s_%d%s", baseFilename, uuid, ext)
+	newFilename := fmt.Sprintf("%s_%s%s", baseFilename, uuid, ext)
 	destPath := filepath.Join(uploadPath, newFilename)
 
 	dst, err := os.Create(destPath)
