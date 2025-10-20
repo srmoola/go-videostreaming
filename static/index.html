@@ -331,7 +331,7 @@
                 // Load handler (success)
                 xhr.addEventListener('load', () => {
                     if (xhr.status === 200) {
-                        showMessage('success', '✅ Upload Successful!', xhr.responseText);
+                        showMessage('success', '✅ Upload Successful!');
                         resetForm();
                     } else {
                         showMessage('error', '❌ Upload Failed', xhr.responseText || 'Server error occurred');
